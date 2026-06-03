@@ -19,38 +19,38 @@ nav.querySelectorAll('a').forEach((link) => {
 });
 
 /**
- * Booksy on-page booking.
- *
- * Booksy blocks plain <iframe> embedding (X-Frame-Options / frame-ancestors), so a raw
- * iframe renders blank. Their supported "embed" is a widget that opens the full booking
- * flow in an overlay on the page. We:
- *   1) render a styled "Book Now" button immediately (always works), and
- *   2) load Booksy's official widget script, which upgrades the button to open the
- *      booking flow in an on-page overlay instead of navigating away.
+ * Booksy booking — opens the official Booksy widget in an on-page overlay.
+ * Any element with [data-booksy-open] launches the dialog; the iframe is created
+ * lazily on first open. Closes via the X, the backdrop, or the Escape key.
  */
-(function setupBooksy() {
-  const container = document.getElementById('booksy-widget-container');
-  if (!container) return;
+(function booksyModal() {
+  const WIDGET_URL =
+    'https://booksy.com/widget-2021/index.html?id=1703643&lang=en&country=us&mode=dialog&theme=default';
+  const modal = document.getElementById('booksyModal');
+  const body = document.getElementById('booksyModalBody');
+  if (!modal || !body) return;
 
-  const bizId = container.dataset.booksyBizId;
-  const bookingUrl = container.dataset.booksyUrl;
+  function open(e) {
+    if (e) e.preventDefault();
+    if (!body.querySelector('iframe')) {
+      const frame = document.createElement('iframe');
+      frame.src = WIDGET_URL;
+      frame.title = 'Book with Prime & Proper on Booksy';
+      frame.setAttribute('allow', 'payment');
+      body.appendChild(frame);
+    }
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
 
-  // 1) Immediate, guaranteed-working CTA.
-  const btn = document.createElement('a');
-  btn.className = 'btn btn-gold btn-lg booksy-book-btn';
-  btn.href = bookingUrl;
-  btn.target = '_blank';
-  btn.rel = 'noopener';
-  btn.textContent = 'Book Now';
-  container.appendChild(btn);
+  function close() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
 
-  // 2) Load Booksy's official widget to enable the on-page overlay booking flow.
-  const s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://booksy.com/widget/code.js?id=' + encodeURIComponent(bizId) + '&country=us&lang=en';
-  s.onerror = function () {
-    // The button above already links straight to Booksy — nothing else needed.
-    console.warn('Booksy widget script unavailable; using direct booking link.');
-  };
-  document.body.appendChild(s);
+  document.querySelectorAll('[data-booksy-open]').forEach((el) => el.addEventListener('click', open));
+  modal.querySelectorAll('[data-booksy-close]').forEach((el) => el.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
 })();

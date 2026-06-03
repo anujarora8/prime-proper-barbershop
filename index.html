@@ -59,7 +59,7 @@
         <a href="#services">Services</a>
         <a href="#barbers">Barbers</a>
         <a href="#visit">Visit</a>
-        <a class="btn btn-gold nav-cta" href="#book">Book Now</a>
+        <a class="btn btn-gold nav-cta" href="#book" data-booksy-open>Book Now</a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -87,7 +87,7 @@
       </a>
 
       <div class="hero-cta">
-        <a class="btn btn-gold btn-lg" href="#book">Book Your Appointment</a>
+        <a class="btn btn-gold btn-lg" href="#book" data-booksy-open>Book Your Appointment</a>
         <a class="btn btn-ghost btn-lg" href="#reviews">Read the Reviews</a>
       </div>
     </div>
@@ -194,7 +194,7 @@
       </div>
 
       <div class="services-cta">
-        <a class="btn btn-gold" href="#book">Book a service on Booksy</a>
+        <a class="btn btn-gold" href="#book" data-booksy-open>Book a service on Booksy</a>
       </div>
     </div>
   </section>
@@ -279,26 +279,15 @@
   <!-- ===== Booking (Booksy embed) ===== -->
   <section class="section book" id="book">
     <div class="container">
-      <p class="eyebrow gold">Reserve Your Chair</p>
-      <h2>Book online — 24/7</h2>
-      <p class="section-lead">
-        Pick your barber, service, and time below. The booking flow opens right here on
-        the page through Booksy — real-time availability, instant confirmation.
-      </p>
-
-      <div class="booksy-wrap">
-        <!-- Official Booksy widget (business ID 1703643): on-page "Book Now" that opens
-             the full Booksy booking flow in an overlay, so visitors never leave the site. -->
-        <div id="booksy-widget-container" class="booksy-widget"
-             data-booksy-biz-id="1703643"
-             data-booksy-url="https://booksy.com/en-us/1703643_prime-proper-barber-co_barber-shop_14704_gilbert"></div>
-
-        <!-- Fallback link, always works even if the third-party script is blocked. -->
-        <noscript>
-          <a class="btn btn-gold btn-lg"
-             href="https://booksy.com/en-us/1703643_prime-proper-barber-co_barber-shop_14704_gilbert"
-             target="_blank" rel="noopener">Book on Booksy →</a>
-        </noscript>
+      <div class="book-card">
+        <p class="eyebrow gold">Reserve Your Chair</p>
+        <h2>Book online — 24/7</h2>
+        <p class="section-lead">
+          Pick your barber, service, and time — the Booksy booking flow opens right here
+          on the page. Real-time availability, instant confirmation.
+        </p>
+        <button class="btn btn-gold btn-lg book-btn" type="button" data-booksy-open>Book Now</button>
+        <p class="book-note">Powered by Booksy · <a href="https://booksy.com/en-us/1703643_prime-proper-barber-co_barber-shop_14704_gilbert" target="_blank" rel="noopener">open in a new tab ↗</a></p>
       </div>
     </div>
   </section>
@@ -328,7 +317,7 @@
           </p>
         </div>
 
-        <a class="btn btn-gold btn-lg" href="#book">Book an Appointment</a>
+        <a class="btn btn-gold btn-lg" href="#book" data-booksy-open>Book an Appointment</a>
       </div>
 
       <div class="visit-map">
@@ -365,6 +354,15 @@
       <p>3107 S Gilbert Rd #109, Gilbert, AZ 85295</p>
     </div>
   </footer>
+
+  <!-- Booksy booking modal: opens the official Booksy widget in an on-page overlay -->
+  <div class="booksy-modal" id="booksyModal" hidden>
+    <div class="booksy-modal__backdrop" data-booksy-close></div>
+    <div class="booksy-modal__dialog" role="dialog" aria-modal="true" aria-label="Book with Prime &amp; Proper on Booksy">
+      <button class="booksy-modal__close" type="button" data-booksy-close aria-label="Close booking">&times;</button>
+      <div class="booksy-modal__body" id="booksyModalBody"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
