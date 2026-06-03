@@ -4,28 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prime &amp; Proper Barber Co. | Premium Barbershop in Gilbert, AZ</title>
-  <meta name="description" content="Prime &amp; Proper Barber Co. — a 5-star, premium barbershop in Gilbert, AZ. Master fades, beard grooming, and a clean, welcoming experience. Book online via Booksy." />
+  <meta name="description" content="Prime &amp; Proper Barber Co. — a 5-star premium barbershop in Gilbert, AZ. Master fades, beard grooming, and a clean, welcoming experience. Book online via Booksy." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Prime &amp; Proper Barber Co. | Premium Barbershop in Gilbert, AZ" />
   <meta property="og:description" content="A 5-star premium barbershop in Gilbert, AZ. Master fades, beard grooming, and a clean, welcoming experience. Book online." />
   <meta property="og:type" content="business.business" />
+  <meta property="og:image" content="assets/logo.png" />
 
+  <link rel="icon" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Structured data: helps the Google rating anchor surface in search -->
+  <!-- Structured data for search. NOTE: aggregateRating intentionally omitted until the
+       real Google rating + review count are confirmed (no fabricated numbers). -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BarberShop",
     "name": "Prime & Proper Barber Co.",
-    "image": "",
+    "image": "assets/logo.png",
     "url": "https://www.primeproperaz.com/",
-    "telephone": "",
     "priceRange": "$$",
+    "foundingDate": "2026",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "3107 S Gilbert Rd #109",
@@ -33,12 +36,6 @@
       "addressRegion": "AZ",
       "postalCode": "85295",
       "addressCountry": "US"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "96",
-      "bestRating": "5"
     }
   }
   </script>
@@ -47,9 +44,11 @@
   <!-- ===== Header ===== -->
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="#top">
-        <span class="brand-mark">P&amp;P</span>
-        <span class="brand-text">
+      <a class="brand" href="#top" aria-label="Prime &amp; Proper Barber Co. home">
+        <!-- Real logo. If the file isn't present yet, the wordmark fallback shows. -->
+        <img class="brand-logo" src="assets/logo.png" alt="Prime &amp; Proper Barber Co."
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+        <span class="brand-text" style="display:none">
           <strong>Prime &amp; Proper</strong>
           <em>Barber Co.</em>
         </span>
@@ -73,7 +72,7 @@
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
-      <p class="eyebrow">Gilbert, Arizona &nbsp;•&nbsp; Est. 2020</p>
+      <p class="eyebrow">Gilbert, Arizona &nbsp;•&nbsp; Est. 2026</p>
       <h1>Sharp cuts.<br />Proper craft.</h1>
       <p class="hero-sub">
         A premium barbershop where meticulous fades, expert beard work, and genuine
@@ -84,7 +83,7 @@
       <a class="google-badge" href="https://www.google.com/maps/search/?api=1&query=Prime+%26+Proper+Barber+Co+Gilbert+AZ" target="_blank" rel="noopener">
         <svg class="g-logo" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.26 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.3 9.14 5.38 12 5.38z"/></svg>
         <span class="stars" aria-hidden="true">★★★★★</span>
-        <span class="badge-text"><strong>5.0</strong> on Google &nbsp;•&nbsp; 96+ reviews</span>
+        <span class="badge-text"><strong>5.0</strong> on Google</span>
       </a>
 
       <div class="hero-cta">
@@ -97,11 +96,10 @@
   <!-- ===== Trust strip ===== -->
   <div class="trust-strip">
     <div class="container trust-inner">
-      <span>★ 5.0 Rated</span>
+      <span>★ 5.0 on Google</span>
       <span>Master Fades</span>
       <span>Beard Grooming</span>
       <span>Walk-Ins &amp; Online Booking</span>
-      <span>Faith &amp; Family Owned</span>
     </div>
   </div>
 
@@ -117,7 +115,7 @@
           <div class="rating-number">5.0</div>
           <div>
             <div class="stars big" aria-hidden="true">★★★★★</div>
-            <p class="rating-meta">Based on 96+ Google &amp; Booksy reviews</p>
+            <p class="rating-meta">Five-star rated on Google</p>
           </div>
         </div>
       </div>
@@ -126,25 +124,25 @@
         <figure class="review-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
           <blockquote>"Alex got me feeling like a new man. Best barber in AZ — hands down."</blockquote>
-          <figcaption>— Verified Google review</figcaption>
+          <figcaption>
+            <a href="https://www.google.com/maps/search/?api=1&query=Prime+%26+Proper+Barber+Co+Gilbert+AZ" target="_blank" rel="noopener">Read on Google →</a>
+          </figcaption>
         </figure>
 
         <figure class="review-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
           <blockquote>"Very clean, very friendly, and I highly recommend Ryan and the rest of the barbers there!"</blockquote>
-          <figcaption>— Verified Google review</figcaption>
+          <figcaption>
+            <a href="https://www.google.com/maps/search/?api=1&query=Prime+%26+Proper+Barber+Co+Gilbert+AZ" target="_blank" rel="noopener">Read on Google →</a>
+          </figcaption>
         </figure>
 
         <figure class="review-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
           <blockquote>"My son and I were well taken care of the moment we walked in. We'll definitely be back."</blockquote>
-          <figcaption>— Verified Google review</figcaption>
-        </figure>
-
-        <figure class="review-card">
-          <div class="stars" aria-hidden="true">★★★★★</div>
-          <blockquote>"Cleanest fade I've had in years. The attention to detail is on another level."</blockquote>
-          <figcaption>— Verified Google review</figcaption>
+          <figcaption>
+            <a href="https://www.google.com/maps/search/?api=1&query=Prime+%26+Proper+Barber+Co+Gilbert+AZ" target="_blank" rel="noopener">Read on Google →</a>
+          </figcaption>
         </figure>
       </div>
 
@@ -159,43 +157,44 @@
   <!-- ===== Services ===== -->
   <section class="section services" id="services">
     <div class="container">
-      <p class="eyebrow gold">The Craft</p>
-      <h2>Services</h2>
-      <p class="section-lead">
-        Traditional barbering blended with modern technique. Every visit is dialed in
-        to detail — book the service that fits, prices confirmed at checkout on Booksy.
-      </p>
+      <p class="eyebrow gold">What We Offer</p>
+      <h2>Our Services</h2>
 
       <div class="service-grid">
         <div class="service-card">
-          <h3>Signature Haircut</h3>
-          <p>A precision cut tailored to you — consultation, cut, style, and a clean finish.</p>
+          <div class="service-head"><h3>Classic Haircut</h3><span class="price">$38</span></div>
+          <p>A classic cut customized to your style, complete with professional styling for a polished finish.</p>
         </div>
+
         <div class="service-card featured">
-          <span class="tag">Most Popular</span>
-          <h3>Skin Fade</h3>
-          <p>Our specialty. Seamless, blended-to-skin fades with crisp, sharp lines.</p>
+          <span class="tag">Signature</span>
+          <div class="service-head"><h3>Haircut &amp; Beard Combo</h3><span class="price">$55</span></div>
+          <p>Our signature haircut paired with expert beard trimming, enhanced by a soothing hot towel treatment for ultimate relaxation.</p>
         </div>
+
         <div class="service-card">
-          <h3>Haircut &amp; Beard</h3>
-          <p>The full reset — fresh cut paired with a shaped, lined, and conditioned beard.</p>
+          <div class="service-head"><h3>Beard Line Up</h3><span class="price">$30</span></div>
+          <p>Sharp, defined edges for your beard, finished with a luxurious hot towel to soften and refresh.</p>
         </div>
+
         <div class="service-card">
-          <h3>Beard Grooming</h3>
-          <p>Trim, shape, hot towel, and line-up to keep your beard looking proper.</p>
+          <div class="service-head"><h3>Kids 12 &amp; Under</h3><span class="price">$30</span></div>
+          <p>Fun and age-appropriate cuts with creative styling, designed to make young ones feel confident and sharp.</p>
         </div>
+
         <div class="service-card">
-          <h3>Kids Cut</h3>
-          <p>Patient, friendly cuts for the young gentlemen — same care, smaller chair.</p>
+          <div class="service-head"><h3>Senior 60+</h3><span class="price">$30</span></div>
+          <p>Timeless grooming with gentle care, focusing on comfort and a refined look suited to your preferences.</p>
         </div>
+
         <div class="service-card">
-          <h3>Line-Up / Neck &amp; Edge</h3>
-          <p>A quick, sharp clean-up between visits to keep the edges fresh.</p>
+          <div class="service-head"><h3>Chairman Treatment</h3><span class="price">$70</span></div>
+          <p>An elevated grooming experience featuring a precision haircut, expert beard design, brow grooming, revitalizing facial, and invigorating hair wash. Emerge sharp, refined, and boardroom-ready.</p>
         </div>
       </div>
 
       <div class="services-cta">
-        <a class="btn btn-gold" href="#book">See full menu &amp; book on Booksy</a>
+        <a class="btn btn-gold" href="#book">Book a service on Booksy</a>
       </div>
     </div>
   </section>
@@ -204,32 +203,75 @@
   <section class="section barbers" id="barbers">
     <div class="container">
       <p class="eyebrow gold">The Team</p>
-      <h2>Meet the barbers</h2>
+      <h2>Meet Our Barbers</h2>
       <div class="barber-grid">
+
         <div class="barber-card">
-          <div class="barber-avatar">S</div>
-          <h3>Siah</h3>
+          <div class="barber-photo">
+            <img src="assets/team/ryan-andrade.jpg" alt="Ryan Andrade"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <span class="barber-monogram" style="display:none">R</span>
+          </div>
+          <h3>Ryan Andrade</h3>
           <p class="role">Founder / Owner</p>
-          <p>Born and raised in Gilbert, honing the craft since 2020. Specialty: fades.</p>
+          <p>Born and raised in Gilbert, Arizona, I've been honing my craft since 2020. My specialty lies in fades, and I'm an expert in beard grooming — consistently delivering exceptional results for every client.</p>
         </div>
+
         <div class="barber-card">
-          <div class="barber-avatar">J</div>
-          <h3>Jerry</h3>
+          <div class="barber-photo">
+            <img src="assets/team/alex-rodriguez.jpg" alt="Alex Rodriguez"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <span class="barber-monogram" style="display:none">A</span>
+          </div>
+          <h3>Alex Rodriguez</h3>
+          <p class="role">Owner / Partner</p>
+          <p>Since 2022, I've been perfecting my skills in Chandler, Arizona, specializing in clean fades and beard grooming. At Prime &amp; Proper, we offer a professional experience that leaves you confident and refreshed.</p>
+        </div>
+
+        <div class="barber-card">
+          <div class="barber-photo">
+            <img src="assets/team/jerry-benitez.jpg" alt="Jerry Benitez"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <span class="barber-monogram" style="display:none">J</span>
+          </div>
+          <h3>Jerry Benitez</h3>
           <p class="role">Barber</p>
-          <p>Clean lines, classic cuts, and a chair you'll want to come back to.</p>
+          <p>I'm Jerry — a dedicated barber who takes pride in delivering sharp, precise, clean fades tailored to each client. I focus on consistency and attention to detail.</p>
         </div>
+
         <div class="barber-card">
-          <div class="barber-avatar">J</div>
+          <div class="barber-photo">
+            <img src="assets/team/jordyn-mejia.jpg" alt="Jordyn Mejia"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <span class="barber-monogram" style="display:none">J</span>
+          </div>
           <h3>Jordyn Mejia</h3>
           <p class="role">Barber</p>
-          <p>Modern styles and detailed finishes built around how you want to look.</p>
+          <p>Born in Utah, Jordyn is a dedicated barber who values quality over profit and focuses on building real connections with every client. Family-oriented at heart, she puts people first — all while providing clean fades and sick braids.</p>
         </div>
+
         <div class="barber-card">
-          <div class="barber-avatar">S</div>
-          <h3>Sebastian</h3>
+          <div class="barber-photo">
+            <img src="assets/team/sebastian-mejia.jpg" alt="Sebastian Mejia"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <span class="barber-monogram" style="display:none">S</span>
+          </div>
+          <h3>Sebastian Mejia</h3>
           <p class="role">Barber</p>
-          <p>Skilled fades and beard work with a friendly, dialed-in approach.</p>
+          <p>Born in Utah and moved to Arizona in 2023. I started barbering in 2020 and have been perfecting the craft ever since. Cancer survivor, and happy to be here.</p>
         </div>
+
+        <div class="barber-card">
+          <div class="barber-photo">
+            <img src="assets/team/josiah-arizmendiz.jpg" alt="Josiah Arizmendiz"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+            <span class="barber-monogram" style="display:none">J</span>
+          </div>
+          <h3>Josiah "Siah" Arizmendiz</h3>
+          <p class="role">Barber</p>
+          <p>Born and raised in Arizona. My goal is to put you in your Prime and have you feeling Proper when you leave the chair — meticulous attention to detail, sharp style, and great company.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -240,23 +282,23 @@
       <p class="eyebrow gold">Reserve Your Chair</p>
       <h2>Book online — 24/7</h2>
       <p class="section-lead">
-        Pick your barber, service, and time directly through Booksy below. Real-time
-        availability, instant confirmation.
+        Pick your barber, service, and time below. The booking flow opens right here on
+        the page through Booksy — real-time availability, instant confirmation.
       </p>
 
       <div class="booksy-wrap">
-        <!-- Official Booksy widget (business ID 1703643). Renders a live "Book Now" button. -->
-        <div id="booksy-widget-container" class="booksy-widget" data-booksy-id="1703643"></div>
+        <!-- Official Booksy widget (business ID 1703643): on-page "Book Now" that opens
+             the full Booksy booking flow in an overlay, so visitors never leave the site. -->
+        <div id="booksy-widget-container" class="booksy-widget"
+             data-booksy-biz-id="1703643"
+             data-booksy-url="https://booksy.com/en-us/1703643_prime-proper-barber-co_barber-shop_14704_gilbert"></div>
 
-        <!-- Guaranteed-working fallback / primary action -->
-        <div class="booksy-fallback">
+        <!-- Fallback link, always works even if the third-party script is blocked. -->
+        <noscript>
           <a class="btn btn-gold btn-lg"
              href="https://booksy.com/en-us/1703643_prime-proper-barber-co_barber-shop_14704_gilbert"
-             target="_blank" rel="noopener">
-            Book on Booksy →
-          </a>
-          <p class="booksy-note">Opens the official Prime &amp; Proper Booksy page in a new tab.</p>
-        </div>
+             target="_blank" rel="noopener">Book on Booksy →</a>
+        </noscript>
       </div>
     </div>
   </section>
@@ -303,8 +345,9 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="brand-mark">P&amp;P</span>
-        <div>
+        <img class="footer-logo" src="assets/logo.png" alt="Prime &amp; Proper Barber Co."
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <div style="display:none">
           <strong>Prime &amp; Proper Barber Co.</strong>
           <p>Premium barbering in Gilbert, AZ. ★ 5.0 rated.</p>
         </div>

@@ -19,20 +19,38 @@ nav.querySelectorAll('a').forEach((link) => {
 });
 
 /**
- * Booksy embed.
- * Loads the official Booksy widget for Prime & Proper Barber Co. (business ID 1703643).
- * The widget renders a live "Book Now" button that opens the booking flow.
- * A static fallback link is always present in the markup so booking works even if
- * the third-party script is blocked or unavailable.
+ * Booksy on-page booking.
+ *
+ * Booksy blocks plain <iframe> embedding (X-Frame-Options / frame-ancestors), so a raw
+ * iframe renders blank. Their supported "embed" is a widget that opens the full booking
+ * flow in an overlay on the page. We:
+ *   1) render a styled "Book Now" button immediately (always works), and
+ *   2) load Booksy's official widget script, which upgrades the button to open the
+ *      booking flow in an on-page overlay instead of navigating away.
  */
-(function loadBooksyWidget() {
-  const BOOKSY_ID = '1703643';
+(function setupBooksy() {
+  const container = document.getElementById('booksy-widget-container');
+  if (!container) return;
+
+  const bizId = container.dataset.booksyBizId;
+  const bookingUrl = container.dataset.booksyUrl;
+
+  // 1) Immediate, guaranteed-working CTA.
+  const btn = document.createElement('a');
+  btn.className = 'btn btn-gold btn-lg booksy-book-btn';
+  btn.href = bookingUrl;
+  btn.target = '_blank';
+  btn.rel = 'noopener';
+  btn.textContent = 'Book Now';
+  container.appendChild(btn);
+
+  // 2) Load Booksy's official widget to enable the on-page overlay booking flow.
   const s = document.createElement('script');
   s.async = true;
-  s.src = 'https://booksy.com/widget/code.js?id=' + BOOKSY_ID + '&country=us&lang=en';
+  s.src = 'https://booksy.com/widget/code.js?id=' + encodeURIComponent(bizId) + '&country=us&lang=en';
   s.onerror = function () {
-    // Fallback link in the markup already covers this case — nothing more to do.
-    console.warn('Booksy widget could not load; using direct booking link.');
+    // The button above already links straight to Booksy — nothing else needed.
+    console.warn('Booksy widget script unavailable; using direct booking link.');
   };
   document.body.appendChild(s);
 })();
